@@ -4,15 +4,21 @@
 
   tasks:
 
-    - name: fetch nodejs repo setup script
-      get_url:
-        url: https://deb.nodesource.com/setup_8.x
-        dest: /tmp/nodesetup
-        mode: "a+x"
-      when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+    - name: Copy the NodeSource GPG key to the remote
+      copy:
+        src: ./depricated/nodesource.gpg.key
+        dest: /tmp/nodesource.gpg.key
 
-    - name: install nodejs repo
-      shell: /tmp/nodesetup
+    - name: Import the NodeSource GPG key into apt
+      apt_key:
+        file: /tmp/nodesource.gpg.key
+        state: present
+
+    - name: Add NodeJS apt repository
+      apt_repository:
+        repo: "deb https://deb.nodesource.com/node_8.x trusty main"
+        state: present
+        update_cache: yes
       when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
     - name: compute package names

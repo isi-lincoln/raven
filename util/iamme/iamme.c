@@ -204,7 +204,7 @@ void set_chaddr(struct dhcp_pkt *pkt, char *interface)
   char buf[SYSFS_ETHADDR_LEN];
   int n = fread(buf, sizeof(char), SYSFS_ETHADDR_LEN, f);
   if (n < SYSFS_ETHADDR_LEN) {
-    printf("error reading eth0 address\n");
+    printf("error reading %s address\n", interface);
     exit(EXIT_FAILURE);
   }
 
