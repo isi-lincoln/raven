@@ -7,7 +7,7 @@ BLUE="\e[34m"
 CLEAR="\e[0m"
 
 function phase() {
-bin/echo -e "$BOLD
+/bin/echo -e "$BOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r$1
 $CLEAR"
 }
