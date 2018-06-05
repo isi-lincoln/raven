@@ -16,7 +16,7 @@ $CLEAR"
 
 phase "Fetching walrus"
   if [[ ! -d walrustf ]]; then
-    git clone https://github.com/rcgoodfellow/walrustf
+    /usr/bin/git clone https://github.com/rcgoodfellow/walrustf
   fi
 
 phase "Building"
